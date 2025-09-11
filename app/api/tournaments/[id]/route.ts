@@ -10,7 +10,7 @@ export async function GET(
 ) {
   try {
     const result = await sql`
-      SELECT id, name, game_name, start_time, created_at
+      SELECT id, name, game_name, start_time, created_at, twitch_channel
       FROM tournaments
       WHERE id = ${params.id}
       LIMIT 1
