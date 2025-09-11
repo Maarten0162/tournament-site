@@ -1,6 +1,6 @@
 import TwitchPlayer from "@/app/ui/SinglePage/TwitchPlayer";
 
-
+import TwitchChat from "@/app/ui/SinglePage/TwitchChat";
 
 // const stream = await fetchStreamByID();
 const stream = "lck";
@@ -8,16 +8,21 @@ const stream = "lck";
 export default function EventDetailPage() {
   return (
     <>
+<div className="flex flex-col md:flex-row gap-4 p-3">
+      {/* Stream Player */}
       <TwitchPlayer 
-        channel={stream}
-        autoplay={true} 
+        channel={stream} 
+        autoplay 
         muted={false} 
-        className="w-full h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
+        className="w-full md:w-2/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
       />
 
-      <div className="p-4 md:p-8 lg:p-12 xl:p-16">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Event Title</h1>
-      </div>
+      {/* Chat */}
+      <TwitchChat 
+        channel={stream}
+        className="w-full md:w-1/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
+      />
+    </div>
     </>
   )
 };
