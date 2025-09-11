@@ -14,17 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KUT CHALLONGE",
-  description: "Challonge is Kut",
+  title: "challonge 2.0 maar beter",
+  description: "Challonge is minder goed dan deze website",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex bg-gray-100 dark:bg-gray-900">
-        <SideNav />
-        <main className="flex-1 p-6">{children}</main>
-      </body>
+      <body className="bg-gray-100 dark:bg-gray-900">
+  <SideNav />
+  <main className="ml-64 p-6">{children}</main>
+</body>
     </html>
   );
 }
