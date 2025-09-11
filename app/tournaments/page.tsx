@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default async function TournamentsPage() {
   // Call the API route
-  const res = await fetch("/api/tournaments", {
+  const res = await fetch("http://localhost:3000/api/tournaments", {
     cache: "no-store", // ensure fresh data
   });
   const data = await res.json();

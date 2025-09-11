@@ -8,7 +8,7 @@ export default async function EditTournamentPage({ params }: Props) {
   const { id } = params;
 
   // Fetch tournament data from API or DB
-  const res = await fetch(`/api/tournaments/${id}`, {
+  const res = await fetch(`http://localhost:3000/api/tournaments/${id}`, {
     cache: "no-store",
   });
 
