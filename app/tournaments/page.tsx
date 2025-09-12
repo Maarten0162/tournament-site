@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
+import DeleteTournamentButton from "./DeleteButton";
 
 export const metadata: Metadata = {
   title: "TOURNAMENTS PAGE JAJA",
@@ -50,6 +51,8 @@ export default async function TournamentsPage() {
     >
       Edit
     </Link>
+   <DeleteTournamentButton id={t.id} />
+
   </li>
 ))}
 
