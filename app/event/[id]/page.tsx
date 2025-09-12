@@ -28,7 +28,7 @@ export default async function EventDetailPage({ params }: Props) {
         className="w-full md:w-2/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
       />
 
-      {/* Chat */}
+      {/* Chat */}  
       <TwitchChat 
         channel={data.tournament.twitch_channel}
         className="w-full md:w-1/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
