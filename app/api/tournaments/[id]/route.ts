@@ -33,13 +33,14 @@ export async function PUT(
 ) {
   try {
     const body = await req.json();
-    const { name, game_name, start_time } = body;
+    const { name, game_name, start_time, twitch_channel } = body;
 
     await sql`
       UPDATE tournaments
       SET name = ${name},
           game_name = ${game_name},
-          start_time = ${start_time}
+          start_time = ${start_time},
+          twitch_channel = ${twitch_channel}
       WHERE id = ${params.id}
     `;
 
