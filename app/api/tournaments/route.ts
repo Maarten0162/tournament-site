@@ -16,3 +16,20 @@ export async function GET() {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { name, game_name, start_time, twitch_channel } = body;
+
+    const result = await sql`
+      INSERT INTO tournaments (name, game_name, start_time, twitch_channel)
+      VALUES (${name}, ${game_name}, ${start_time}, ${twitch_channel})
+      RETURNING *;
+    `;
+
+    return NextResponse.json({ tournament: result[0] });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}

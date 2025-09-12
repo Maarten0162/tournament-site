@@ -34,13 +34,12 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-6 text-center">Live Now on Twitch</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {/* Example Twitch embed */}
-          <iframe
-            src="https://player.twitch.tv/?channel=Morrog&parent=localhost"
-            height="300"
-            width="100%"
-            allowFullScreen
-            className="rounded-lg shadow"
-          ></iframe>
+          <TwitchPlayer 
+                  channel={`Morrog`} 
+                  autoplay 
+                  muted={false} 
+                  className="w-full md:w-2/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
+                />
           <iframe
             src="https://player.twitch.tv/?channel=LinkTijger&parent=localhost"
             height="300"
