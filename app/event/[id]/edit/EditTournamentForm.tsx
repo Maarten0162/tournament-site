@@ -90,7 +90,7 @@ export default function EditTournamentForm({ tournament }: Props) {
 
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded"
+        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800 transition cursor-pointer"
         disabled={loading}
       >
         {loading ? "Saving..." : "Save Changes"}

@@ -53,7 +53,7 @@ export default function CreateTournamentForm() {
         <label className="block text-sm font-medium">Twitch Channel</label>
         <input name="twitch_channel" type="text" required className="border rounded p-2 w-full" />
       </div>
-      <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded" disabled={loading}>
+      <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-800 transition cursor-pointer" disabled={loading}>
         {loading ? "Creating..." : "Create Tournament"}
       </button>
     </form>
