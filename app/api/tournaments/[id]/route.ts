@@ -1,3 +1,4 @@
+import Error from "next/error";
 import { NextResponse } from "next/server";
 import postgres from "postgres";
 
@@ -44,6 +45,17 @@ export async function PUT(
       WHERE id = ${params.id}
     `;
 
+    return NextResponse.json({ success: true });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    await sql`DELETE FROM tournaments WHERE id = ${params.id}`;
     return NextResponse.json({ success: true });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

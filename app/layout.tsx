@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className="bg-gray-100 dark:bg-gray-900">
   <SideNav />
-  <main className="ml-64 p-6">{children}</main>
+  <main className="ml-64">{children}</main>
 </body>
     </html>
   );
