@@ -19,19 +19,20 @@ export default async function EventDetailPage({ params }: Props) {
   
   return (
     <>
-<div className="flex flex-col md:flex-row gap-4 p-3">
+<div className="flex flex-col md:flex-row gap-4">
       {/* Stream Player */}
       <TwitchPlayer 
         channel={data.tournament.twitch_channel} 
-        autoplay 
+        autoplay
+         
         muted={false} 
-        className="w-full md:w-2/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
+        className="w-full   h-70 md:h-screen lg:h-[500px] xl:h-[00px] shadow-lg"
       />
 
       {/* Chat */}  
       <TwitchChat 
         channel={data.tournament.twitch_channel}
-        className="w-full md:w-1/3 h-70 md:h-screen lg:h-[500px] xl:h-[700px] shadow-lg"
+        className="w-full md:w-1/3 h-70 md:h-screen lg:h-[500px] xl:h-[600px] shadow-lg"
       />
     </div>
     </>
