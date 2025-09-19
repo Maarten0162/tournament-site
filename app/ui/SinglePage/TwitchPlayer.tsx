@@ -7,14 +7,17 @@ type TwitchPlayerProps = {
     className?: string;
 }
 
-export default function TwitchPlayer({channel, autoplay, muted, vwidth, vheight, className}: TwitchPlayerProps) {
+export default function TwitchPlayer({
+  channel,
+  autoplay = false,
+  muted = false,
+  className,
+}: TwitchPlayerProps) {
   return (
     <iframe
-        src={`https://player.twitch.tv/?channel=${channel}&parent=localhost&autoplay=${autoplay}&muted=${muted}`}
-        allowFullScreen
-        height={vheight}
-        width={vwidth}
-        className={className}
+      src={`https://player.twitch.tv/?channel=${channel}&parent=localhost&autoplay=${autoplay}&muted=${muted}`}
+      allowFullScreen
+      className={`w-full h-full ${className || ""}`}
     />
   );
 }

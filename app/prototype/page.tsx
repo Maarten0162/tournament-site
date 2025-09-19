@@ -3,6 +3,7 @@
 import { Responsive, WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import TwitchPlayer from "../ui/SinglePage/TwitchPlayer";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -46,7 +47,12 @@ export default function TournamentDashboard() {
           key="stream"
           className="bg-red-500 text-white flex items-center justify-center rounded-xl shadow drag-handle"
         >
-          Main Stream / Current Player's Stream
+          <TwitchPlayer 
+                  channel="lck"
+                  autoplay
+                   
+                  muted={false} 
+                />
         </div>
         <div
           key="chat"
