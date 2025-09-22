@@ -1,3 +1,4 @@
+import { Tournament } from "@/app/lib/domain/tournament";
 import Error from "next/error";
 import { NextResponse } from "next/server";
 import postgres from "postgres";
@@ -22,8 +23,8 @@ export async function GET(
     }
 
     return NextResponse.json({ tournament: result[0] });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err: unknown) {
+  return NextResponse.json({ error: "Unknown error" }, { status: 500 });
   }
 }
 
@@ -33,15 +34,15 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const body = await req.json();
-    const { name, game_name, start_time, twitch_channel } = body;
+    const body: Tournament = await req.json();
+    const { name, game_name, start_time, channel } = body;
 
     await sql`
       UPDATE tournaments
       SET name = ${name},
           game_name = ${game_name},
           start_time = ${start_time},
-          twitch_channel = ${twitch_channel}
+          twitch_channel = ${channel}
       WHERE id = ${params.id}
     `;
 

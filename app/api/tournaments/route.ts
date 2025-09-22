@@ -19,12 +19,12 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { name, game_name, start_time, twitch_channel } = body;
+    const body: Tournament = await req.json();
+    const { name, game_name, start_time, channel } = body;
 
     const result = await sql`
       INSERT INTO tournaments (name, game_name, start_time, twitch_channel)
-      VALUES (${name}, ${game_name}, ${start_time}, ${twitch_channel})
+      VALUES (${name}, ${game_name}, ${start_time}, ${channel})
       RETURNING *;
     `;
 
