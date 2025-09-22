@@ -1,20 +1,20 @@
 import { NextResponse } from "next/server";
 import postgres from "postgres";
+import { Tournament } from "@/app/lib/domain/tournament";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
 export async function GET() {
   try {
-    const tournaments = await sql`
+    const tournaments: Tournament[] = await sql`
       SELECT id, name, game_name, start_time, created_at, twitch_channel
       FROM tournaments
       ORDER BY start_time ASC
     `;
-    return NextResponse.json({ success: true, tournaments });
-  } catch (error: any) {
-    console.error("Fetch tournaments error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-  }
+    return NextResponse.json({ tournaments });
+  } catch (err: unknown) {
+  return NextResponse.json({ error: "Unknown error" }, { status: 500 });
+}
 }
 
 export async function POST(req: Request) {
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     `;
 
     return NextResponse.json({ tournament: result[0] });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
+  } catch (err: unknown) {
+  return NextResponse.json({ error: "Unknown error" }, { status: 500 });
+}
 }

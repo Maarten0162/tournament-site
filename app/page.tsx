@@ -35,10 +35,10 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6">
           {/* Example Twitch embed */}
           <iframe
-            src="https://player.twitch.tv/?channel=Morrog&parent=localhost"
+            src="https://player.twitch.tv/?channel=drop_the_ball&parent=localhost"
             height="300"
             width="100%"
-            allowFullScreen
+            allowFullScreen 
             className="rounded-lg shadow"
           ></iframe>
           <iframe
