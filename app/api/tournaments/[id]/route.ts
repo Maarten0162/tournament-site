@@ -8,13 +8,13 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 // GET one tournament
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+ context: { params: { id: string } }
 ) {
   try {
     const result = await sql`
       SELECT id, name, game_name, start_time, created_at, twitch_channel
       FROM tournaments
-      WHERE id = ${params.id}
+      WHERE id = ${context.params.id}
       LIMIT 1
     `;
 
@@ -29,7 +29,7 @@ export async function GET(
 // PUT update tournament
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
     const body: Tournament = await req.json();
@@ -41,7 +41,7 @@ export async function PUT(
           game_name = ${game_name},
           start_time = ${start_time},
           twitch_channel = ${channel}
-      WHERE id = ${params.id}
+      WHERE id = ${context.params.id}
     `;
 
     return NextResponse.json({ success: true });
@@ -49,10 +49,10 @@ export async function PUT(
 }
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
-    await sql`DELETE FROM tournaments WHERE id = ${params.id}`;
+    await sql`DELETE FROM tournaments WHERE id = ${context.params.id}`;
     return NextResponse.json({ success: true });
   } catch (err: unknown) {
     
