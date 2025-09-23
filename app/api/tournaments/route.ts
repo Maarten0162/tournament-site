@@ -11,10 +11,7 @@ export async function GET() {
       ORDER BY start_time ASC
     `;
     return NextResponse.json({ success: true, tournaments });
-  } catch (error: any) {
-    console.error("Fetch tournaments error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-  }
+  }  catch (err: unknown) {}
 }
 
 export async function POST(req: Request) {
@@ -29,7 +26,5 @@ export async function POST(req: Request) {
     `;
 
     return NextResponse.json({ tournament: result[0] });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
+  }  catch (err: unknown) {}
 }
