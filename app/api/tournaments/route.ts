@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import postgres from "postgres";
+import { Tournament } from "@/app/lib/domain/tournament";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
