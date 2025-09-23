@@ -1,20 +1,21 @@
 import { Tournament } from "@/app/lib/domain/tournament";
 import Error from "next/error";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import postgres from "postgres";
+
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
-// GET one tournament
+
 export async function GET(
-  req: Request,
- context: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: { id: string } }
 ) {
   try {
     const result = await sql`
       SELECT id, name, game_name, start_time, created_at, twitch_channel
       FROM tournaments
-      WHERE id = ${context.params.id}
+      WHERE id = ${params.id}
       LIMIT 1
     `;
 
@@ -23,8 +24,11 @@ export async function GET(
     }
 
     return NextResponse.json({ tournament: result[0] });
-  }  catch (err: unknown) {}
+  } catch (err) {
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
 }
+
 
 // PUT update tournament
 export async function PUT(
