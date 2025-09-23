@@ -22,9 +22,7 @@ export async function GET(
     }
 
     return NextResponse.json({ tournament: result[0] });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
+  }  catch (err: unknown) {}
 }
 
 // PUT update tournament
@@ -46,9 +44,7 @@ export async function PUT(
     `;
 
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
-  }
+  } catch (err: unknown) {}
 }
 export async function DELETE(
   req: Request,
@@ -57,7 +53,7 @@ export async function DELETE(
   try {
     await sql`DELETE FROM tournaments WHERE id = ${params.id}`;
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+  } catch (err: unknown) {
+    
   }
 }
